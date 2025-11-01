@@ -9,7 +9,9 @@ import com.example.laptopshop.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User save(User royal);
-    List<User> findOneByEmail(String email); //spring tu tao cau lenh sqlsql select 
+    List<User> findOneByEmail(String email); //spring tu tao cau lenh sql select 
 
     List<User> findAll();
+
+    User findById(long id);
 }

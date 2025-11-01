@@ -32,4 +32,8 @@ public class UserService {
         System.out.println(royal);
         return royal;
     }
+
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
+    }
 }

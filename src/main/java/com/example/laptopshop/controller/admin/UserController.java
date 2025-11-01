@@ -1,4 +1,4 @@
-package com.example.laptopshop.controller;
+package com.example.laptopshop.controller.admin;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.laptopshop.domain.User;
 import com.example.laptopshop.service.UserService;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -36,14 +35,15 @@ public class UserController {
     public String getUserPage(Model model) {
         List<User> users = this.userService.getAllUsers();
         model.addAttribute("users1", users); // bien de truyen tu controller sang view
-        return "admin/user/table-user";
+        return "admin/user/home";
     }
 
     @RequestMapping("/admin/user/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
-        System.out.println("Check id =" + id);
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
         model.addAttribute("id", id);
-        return "admin/user/show";
+        return "admin/user/detail";
     }
 
     @RequestMapping("/admin/user/create")
